@@ -52,10 +52,14 @@ class ColorValues {
   static const int SEARCH_CATEGORY_BOX_BG = 0xffC1E3FC;
   static const int SEARCH_CATEGORY_BOX_BG_SELCTED = 0xff4684EB;
 
+  static const int BLACK_TEXT_COL = 0xFF707070;
   static const int THEME_TEXT_COLOR = 0xFF21C8BE;
   static const int UNSELECTED_TAB_COLOR = 0xFF707070;
   static const int TEXT_COL_GREY = 0xFF707070;
   static const int GRADIENT_COL_1 = 0xFF21C8BE;
   static const int GRADIENT_COL_2 = 0xFF036F68;
+  static const int DIVIDER_COL = 0xFF262626;
+  static const int BLACK_COL = 0xFF000000;
+
 
 }

@@ -4,6 +4,7 @@ import 'package:home_labz/Component/ColorValues.dart';
 import 'package:home_labz/Screens/BottomNavBar.dart';
 import 'package:home_labz/Screens/HomeScreen.dart';
 import 'package:home_labz/Screens/LoginScreen.dart';
+import 'package:home_labz/Screens/SettingsScreen.dart';
 import 'package:home_labz/Screens/SignUpScreen.dart';
 import 'package:home_labz/Screens/SplashScreen.dart';
 import 'package:home_labz/Screens/TestingScreen.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
         ),
       // home:HomeScreen()
       //   home:LoginScreen()
-        home:BottomNavBar()
+      //   home:BottomNavBar()
+        home:SettingsScreen()
       //   home:SplashScreen()
       //   home:SignUpScreen()
         // home:TestingScreen()
