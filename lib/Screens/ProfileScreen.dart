@@ -14,342 +14,355 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: Color(ColorValues.THEME_TEXT_COLOR),
       body: SingleChildScrollView(
-          child: Stack(
-        children: [
+        child: Expanded(
+          flex:1,
+          child:
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
               Container(
                 margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
+                height: MediaQuery.of(context).size.height * 0.8,
                 decoration: BoxDecoration(
                     color: const Color(ColorValues.WHITE),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50.0),
                         topRight: Radius.circular(50.0))),
-          ),
-          Positioned(
-            left: MediaQuery.of(context).size.width / 2.6,
-            top: 5,
-            width: 100,
-            height: 100,
-            child: Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
               ),
-              child: Image.asset('assets/images/profile_pic.png'),
-            ),
-          ),
-          Positioned(
-              top: 60,
-              left: MediaQuery.of(context).size.width / 1.9,
-              height: 45,
-              width: 45,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset('assets/images/Camera.png'),
-              )),
-          Positioned(
-            top: 70,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Wrap(children: [
-              Container(
-                  margin: EdgeInsets.fromLTRB(40, 50, 40, 50),
+              Positioned(
+                left: 0,
+                right: 0,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Color(ColorValues.WHITE),
-                    shape: BoxShape.rectangle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 7.0, // soften the shadow
-                        spreadRadius: 0.0, //extend the shadow
-                      )
-                    ],
+                    shape: BoxShape.circle,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.fromLTRB(20, 50, 30, 0),
-                              child: Image.asset(
-                                'assets/images/user_name.png',
-                                height: 21,
-                                width: 21,
-                              )),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    'Name',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: "Regular",
-                                      color:
-                                          Color(ColorValues.THEME_TEXT_COLOR),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    'Demet Polat',
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: "Regular",
-                                      color: Color(ColorValues.BLACK_TEXT_COL),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                  child: Image.asset('assets/images/profile_pic.png'),
+                ),
+              ),
+              Positioned(
+                top: 60,
+                  left: 60,
+                  right: 0,
+                  child: Container(
+                    height: 45,
+                    width: 45,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.asset('assets/images/Camera.png'),
+                  )),
+              Positioned(
+                top: 70,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: Wrap(children: [
+                  Container(
+                      margin: EdgeInsets.fromLTRB(40, 50, 40, 50),
+                      decoration: BoxDecoration(
+                        color: Color(ColorValues.WHITE),
+                        shape: BoxShape.rectangle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 7.0, // soften the shadow
+                            spreadRadius: 0.0, //extend the shadow
+                          )
                         ],
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                        child: Divider(
-                          height: 2,
-                          color: Color(ColorValues.DIVIDER_COL),
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.fromLTRB(20, 20, 30, 0),
-                              child: Image.asset(
-                                'assets/images/contact.png',
-                                height: 21,
-                                width: 21,
-                              )),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    'Phone',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: "Regular",
-                                      color:
-                                          Color(ColorValues.THEME_TEXT_COLOR),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                  margin: EdgeInsets.fromLTRB(20, 50, 30, 0),
+                                  child: Image.asset(
+                                    'assets/images/user_name.png',
+                                    height: 21,
+                                    width: 21,
+                                  )),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        'Name',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Regular",
+                                          color: Color(
+                                              ColorValues.THEME_TEXT_COLOR),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    '54738930',
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: "Regular",
-                                      color: Color(ColorValues.BLACK_TEXT_COL),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        'Demet Polat',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontFamily: "Regular",
+                                          color:
+                                              Color(ColorValues.BLACK_TEXT_COL),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            child: Divider(
+                              height: 2,
+                              color: Color(ColorValues.DIVIDER_COL),
                             ),
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                        child: Divider(
-                          height: 2,
-                          color: Color(ColorValues.DIVIDER_COL),
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.fromLTRB(20, 20, 30, 0),
-                              child: Image.asset(
-                                'assets/images/calendar.png',
-                                height: 21,
-                                width: 21,
-                              )),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    'Date of Birth',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: "Regular",
-                                      color:
-                                          Color(ColorValues.THEME_TEXT_COLOR),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                  margin: EdgeInsets.fromLTRB(20, 20, 30, 0),
+                                  child: Image.asset(
+                                    'assets/images/contact.png',
+                                    height: 21,
+                                    width: 21,
+                                  )),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        'Phone',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Regular",
+                                          color: Color(
+                                              ColorValues.THEME_TEXT_COLOR),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    '10 may 1992',
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: "Regular",
-                                      color: Color(ColorValues.BLACK_TEXT_COL),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        '54738930',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontFamily: "Regular",
+                                          color:
+                                              Color(ColorValues.BLACK_TEXT_COL),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            child: Divider(
+                              height: 2,
+                              color: Color(ColorValues.DIVIDER_COL),
                             ),
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                        child: Divider(
-                          height: 2,
-                          color: Color(ColorValues.DIVIDER_COL),
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.fromLTRB(20, 20, 30, 0),
-                              child: Image.asset(
-                                'assets/images/eduction.png',
-                                height: 21,
-                                width: 21,
-                              )),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    'Education',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: "Regular",
-                                      color:
-                                          Color(ColorValues.THEME_TEXT_COLOR),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                  margin: EdgeInsets.fromLTRB(20, 20, 30, 0),
+                                  child: Image.asset(
+                                    'assets/images/calendar.png',
+                                    height: 21,
+                                    width: 21,
+                                  )),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        'Date of Birth',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Regular",
+                                          color: Color(
+                                              ColorValues.THEME_TEXT_COLOR),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    'XYZ',
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: "Regular",
-                                      color: Color(ColorValues.BLACK_TEXT_COL),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        '10 may 1992',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontFamily: "Regular",
+                                          color:
+                                              Color(ColorValues.BLACK_TEXT_COL),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            child: Divider(
+                              height: 2,
+                              color: Color(ColorValues.DIVIDER_COL),
                             ),
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                        child: Divider(
-                          height: 2,
-                          color: Color(ColorValues.DIVIDER_COL),
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.fromLTRB(20, 20, 30, 0),
-                              child: Image.asset(
-                                'assets/images/location.png',
-                                height: 21,
-                                width: 21,
-                              )),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    'Address',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: "Regular",
-                                      color:
-                                          Color(ColorValues.THEME_TEXT_COLOR),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                  margin: EdgeInsets.fromLTRB(20, 20, 30, 0),
+                                  child: Image.asset(
+                                    'assets/images/eduction.png',
+                                    height: 21,
+                                    width: 21,
+                                  )),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        'Education',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Regular",
+                                          color: Color(
+                                              ColorValues.THEME_TEXT_COLOR),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                  child: Text(
-                                    'bla bla',
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: "Regular",
-                                      color: Color(ColorValues.BLACK_TEXT_COL),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        'XYZ',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontFamily: "Regular",
+                                          color:
+                                              Color(ColorValues.BLACK_TEXT_COL),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            child: Divider(
+                              height: 2,
+                              color: Color(ColorValues.DIVIDER_COL),
                             ),
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                        child: Divider(
-                          height: 2,
-                          color: Color(ColorValues.DIVIDER_COL),
-                        ),
-                      ),
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 30, horizontal: 40),
-                        height: 40,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: const Color(ColorValues.THEME_TEXT_COLOR),
-                        ),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Save',
-                            style: TextStyle(
-                                color: Color(ColorValues.WHITE), fontSize: 14),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                  margin: EdgeInsets.fromLTRB(20, 20, 30, 0),
+                                  child: Image.asset(
+                                    'assets/images/location.png',
+                                    height: 21,
+                                    width: 21,
+                                  )),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        'Address',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Regular",
+                                          color: Color(
+                                              ColorValues.THEME_TEXT_COLOR),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                                      child: Text(
+                                        'bla bla',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontFamily: "Regular",
+                                          color:
+                                              Color(ColorValues.BLACK_TEXT_COL),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      )
-                    ],
-                  ))
-            ]),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            child: Divider(
+                              height: 2,
+                              color: Color(ColorValues.DIVIDER_COL),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                vertical: 30, horizontal: 40),
+                            height: 40,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              color: const Color(ColorValues.THEME_TEXT_COLOR),
+                            ),
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Save',
+                                style: TextStyle(
+                                    color: Color(ColorValues.WHITE),
+                                    fontSize: 14),
+                              ),
+                            ),
+                          )
+                        ],
+                      ))
+                ]),
+              ),
+            ],
           ),
-        ],
-      )),
+        ),
+      ),
     );
   }
 }

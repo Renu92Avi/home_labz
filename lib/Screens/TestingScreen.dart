@@ -1,70 +1,89 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TestingScreen extends StatefulWidget {
-  const TestingScreen({Key? key}) : super(key: key);
-
-  @override
-  _TestingScreenState createState() => _TestingScreenState();
+void main() {
+  runApp(
+    MyApp(
+      items: List<ListItem>.generate(
+        10,
+            (i) => i % 2 == 0
+            ? HeadingItem('Heading $i')
+            : MessageItem('Sender $i', 'Message body $i'),
+      ),
+    ),
+  );
 }
 
-class _TestingScreenState extends State<TestingScreen> {
+class MyApp extends StatelessWidget {
+  final List<ListItem> items;
+
+  MyApp({Key? key, required this.items}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.topCenter,
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-                // image: DecorationImage(
-                //   image: AssetImage('images/new_york.jpg'),
-                //   fit: BoxFit.fitHeight,
-                // ),
-                ),
-          ),
-          Positioned(
-            top: 48.0,
-            left: 10.0,
-            right: 10.0,
-            child: Card(
-              elevation: 8.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      "New York",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-              top: 170,
-              height: 90,
-              width: 90,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset('assets/images/profile_pic.png'),
-              ))
-        ],
+    final title = 'Mixed List';
+
+    return MaterialApp(
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: ListView.builder(
+          // Let the ListView know how many items it needs to build.
+          itemCount: items.length,
+          // Provide a builder function. This is where the magic happens.
+          // Convert each item into a widget based on the type of item it is.
+          itemBuilder: (context, index) {
+            final item = items[index];
+
+            return ListTile(
+              title: item.buildTitle(context),
+              subtitle: item.buildSubtitle(context),
+            );
+          },
+        ),
       ),
     );
   }
+}
+
+/// The base class for the different types of items the list can contain.
+abstract class ListItem {
+  /// The title line to show in a list item.
+  Widget buildTitle(BuildContext context);
+
+  /// The subtitle line, if any, to show in a list item.
+  Widget buildSubtitle(BuildContext context);
+}
+
+/// A ListItem that contains data to display a heading.
+class HeadingItem implements ListItem {
+  final String heading;
+
+  HeadingItem(this.heading);
+
+  @override
+  Widget buildTitle(BuildContext context) {
+    return Text(
+      heading,
+      style: Theme.of(context).textTheme.headline5,
+    );
+  }
+
+  @override
+  Widget buildSubtitle(BuildContext context) => SizedBox();
+}
+
+/// A ListItem that contains data to display a message.
+class MessageItem implements ListItem {
+  final String sender;
+  final String body;
+
+  MessageItem(this.sender, this.body);
+
+  @override
+  Widget buildTitle(BuildContext context) => Text(sender);
+
+  @override
+  Widget buildSubtitle(BuildContext context) => Text(body);
 }

@@ -60,6 +60,8 @@ class ColorValues {
   static const int GRADIENT_COL_2 = 0xFF036F68;
   static const int DIVIDER_COL = 0xFF262626;
   static const int BLACK_COL = 0xFF000000;
+  static const int BOOKING_DATE_COL = 0xFFB1AEAE;
+
 
 
 }
