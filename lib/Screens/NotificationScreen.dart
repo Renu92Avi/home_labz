@@ -29,7 +29,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         backgroundColor: Color(ColorValues.THEME_TEXT_COLOR),
         body: SingleChildScrollView(
             child: Container(
-          margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
+          margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
           width: MediaQuery.of(context).size.width,
           // height: MediaQuery.of(context).size.height * 0.8,
           decoration: BoxDecoration(

@@ -1,6 +1,12 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart';
+import 'package:home_labz/Constants/ApiConstants.dart';
 import 'package:home_labz/Component/ColorValues.dart';
+import 'package:home_labz/Constants/ConstantMsg.dart';
+import 'package:home_labz/Screens/BottomNavBar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -10,11 +16,84 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  // String _name, _password,_mobile,_city,_email,_state,_deliveryAddress,_pincode;
+  TextEditingController _code = TextEditingController();
+  TextEditingController _mobileNo = TextEditingController();
+  TextEditingController _name = TextEditingController();
+  TextEditingController _address = TextEditingController();
+  TextEditingController _dob = TextEditingController();
+  TextEditingController _education = TextEditingController();
+  late SharedPreferences preferences;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getSharedPreferences();
+  }
+
+  getSharedPreferences() async {
+    preferences = await SharedPreferences.getInstance();
+  }
+
+  void callSignUpApi() async {
+    // if (_name.text.isEmpty) {
+    //   Fluttertoast.showToast(
+    //     msg: ConstantMsg.NAME_VALIDATION,
+    //     toastLength: Toast.LENGTH_SHORT,
+    //     gravity: ToastGravity.CENTER,
+    //     timeInSecForIosWeb: 1,
+    //     //  backgroundColor: Colors.red,
+    //     //   textColor: Colors.white,
+    //     //  fontSize: 16.0
+    //   );
+    // } else {
+      try {
+        print("body+++++");
+        var url = Uri.parse(ApiConstants.SIGN_UP_API);
+        Map<String, String> headers = {"Content-type": "application/json"};
+        Map map = {
+          ConstantMsg.CODE: "123456", //
+          ConstantMsg.MOBILE_NUM: "3333333301", //
+          ConstantMsg.NAME: _name.text,
+          ConstantMsg.ADDRESS: _address.text,
+          ConstantMsg.DOB: _dob.text,
+          ConstantMsg.EDUCATION: _education.text,
+        };
+        // make POST request
+        Response response =
+            await post(url, headers: headers, body: json.encode(map));
+        // check the status code for the result
+        String body = response.body;
+        var data = json.decode(body);
+        if (data["oAuthResponse"].toString() != null) {
+          print(body);
+          preferences.setString(ConstantMsg.ACCESS_TOKEN,
+              data['oAuthResponse']['access_token'].toString());
+          preferences.setString(ConstantMsg.TOKEN_TYPE,
+              data['oAuthResponse']['token_type'].toString());
+          preferences.setString(
+              ConstantMsg.ID, data['userModel']['id'].toString());
+          preferences.setString(
+              ConstantMsg.NAME, data['userModel']['name'].toString());
+          preferences.setString(ConstantMsg.MOBILE_NUM,
+              data['userModel']['mobileNumber'].toString());
+
+          Navigator.pushReplacement(
+              context,
+              new MaterialPageRoute(
+                  builder: (BuildContext context) => BottomNavBar()));
+        } else {}
+      } catch (ex) {
+        print("Error+++++" + ex.toString());
+      }
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Expanded(
         child: Column(
           children: <Widget>[
             Stack(
@@ -45,7 +124,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     'Welcome to Homelabz',
                                     style: TextStyle(
                                       fontSize: 22,
-                                      fontFamily: "normal",
+                                      fontFamily: "Regular",
+                                      fontWeight: FontWeight.w400,
                                       color: Color(ColorValues.WHITE),
                                     ),
                                   )),
@@ -109,6 +189,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               width: MediaQuery.of(context).size.width,
               height: 40,
               child: TextFormField(
+                controller: _code,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                     hintText: "Code",
@@ -127,6 +208,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
               width: MediaQuery.of(context).size.width,
               height: 40,
               child: TextFormField(
+                controller: _mobileNo,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(borderSide: BorderSide.none),
+                    hintText: "Mobile No.",
+                    hintStyle: TextStyle(
+                      color: Color(ColorValues.TEXT_COL_GREY),
+                      fontSize: 12.0,
+                    )),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                border: Border.all(color: Colors.grey),
+              ),
+              width: MediaQuery.of(context).size.width,
+              height: 40,
+              child: TextFormField(
+                controller: _name,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                     hintText: "Name",
@@ -145,6 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               width: MediaQuery.of(context).size.width,
               height: 40,
               child: TextFormField(
+                controller: _address,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                     hintText: "Address",
@@ -163,6 +265,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               width: MediaQuery.of(context).size.width,
               height: 40,
               child: TextFormField(
+                controller: _dob,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                     hintText: "Date of birth",
@@ -181,6 +284,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               width: MediaQuery.of(context).size.width,
               height: 40,
               child: TextFormField(
+                controller: _education,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                     hintText: "Education",
@@ -205,10 +309,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-//                   Navigator.pushReplacement(
-//                       context,
-//                       new MaterialPageRoute(
-//                           builder: (BuildContext context) => HomeScreen()));
+                  callSignUpApi();
                 },
                 child: Text(
                   'PROCEED',
@@ -219,7 +320,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ],
         ),
-      ),
+
     ));
   }
 }

@@ -9,25 +9,23 @@ import 'package:home_labz/Screens/LoginScreen.dart';
 import 'package:home_labz/Screens/SettingsScreen.dart';
 import 'package:home_labz/Screens/SignUpScreen.dart';
 import 'package:home_labz/Screens/SplashScreen.dart';
-import 'package:home_labz/Screens/Testing.dart';
 import 'package:home_labz/Screens/TestingScreen.dart';
+import 'package:home_labz/Screens/LoginScreen.dart';
 
-void main(){
-  runApp(
-    new MaterialApp(
-      title: 'Test',
-      debugShowCheckedModeBanner: true,
-      theme: new ThemeData(
-        primaryColor: ColorValues.TEXT_COLOR,
-
-      ),
-      home: new MyApp(),
-      // routes: <String, WidgetBuilder>{
-      //   '/startscreen': (BuildContext context) => new StartScreen(),
-      //   '/HomeScreen': (BuildContext context) => TabsPage(selectedIndex: 0)
-      // },
-    ));
- // runApp(MyApp());
+void main() {
+  runApp(new MaterialApp(
+    title: 'Test',
+    debugShowCheckedModeBanner: true,
+    theme: new ThemeData(
+      primaryColor: ColorValues.TEXT_COLOR,
+    ),
+    home: new MyApp(),
+    // routes: <String, WidgetBuilder>{
+    //   '/startscreen': (BuildContext context) => new StartScreen(),
+    //   '/HomeScreen': (BuildContext context) => TabsPage(selectedIndex: 0)
+    // },
+  ));
+  // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -38,18 +36,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(
           // primaryColor: Colors.blue,
-            primaryColor: const Color(ColorValues.THEME_TEXT_COLOR)
+          primaryColor: const Color(ColorValues.THEME_TEXT_COLOR),
+          // canvasColor:  Color(ColorValues.THEME_TEXT_COLOR),
         ),
-      // home:HomeScreen()
-      //   home:LoginScreen()
-      //   home:BottomNavBar()
+        // home:HomeScreen()
+        //   home:LoginScreen()
+          home:BottomNavBar()
         // home:SettingsScreen()
-      //   home:SplashScreen()
-        home:SignUpScreen()
-        // home:TestingScreen()
+        //   home:SplashScreen()
+        //   home:SignUpScreen()
+        //   home:TestingScreen()
         // home:BookingDetailsScreen()
         // home:BookingDetails()
-        // home:Testing()
-    );
+        // home: Testing() // tab
+        // home:LoginNew()
+        );
   }
 }

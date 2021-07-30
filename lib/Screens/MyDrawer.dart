@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:home_labz/Component/ColorValues.dart';
+import 'package:home_labz/Screens/BookingDetails.dart';
+import 'package:home_labz/Screens/BookingDetailsScreen.dart';
+import 'package:home_labz/Screens/SettingsScreen.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
+  @override
+  _MyDrawerState createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -27,6 +35,7 @@ class MyDrawer extends StatelessWidget {
                   ),
                 )),
             ListTile(
+            onTap: () => callSettingsScreen(),
               leading: ImageIcon(
                 AssetImage('assets/images/settings.png'),
                 color: Color(ColorValues.THEME_TEXT_COLOR),
@@ -47,6 +56,9 @@ class MyDrawer extends StatelessWidget {
               color: Color(ColorValues.GREY_TEXT_COLOR),
             ),
             ListTile(
+              onTap: (){
+                callLogout();
+              },
               leading: ImageIcon(
                 AssetImage('assets/images/logout.png'),
                 color: Color(ColorValues.THEME_TEXT_COLOR),
@@ -64,5 +76,19 @@ class MyDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  callSettingsScreen() {
+    Navigator.push(
+        context,
+        new MaterialPageRoute(
+            builder: (BuildContext context) => SettingsScreen()));
+  }
+
+  callLogout() {
+    Navigator.push(
+        context,
+        new MaterialPageRoute(
+            builder: (BuildContext context) => BookingDetails()));
   }
 }

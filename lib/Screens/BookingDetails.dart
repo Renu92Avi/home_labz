@@ -13,6 +13,7 @@ class _BookingDetailsState extends State<BookingDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
           centerTitle: true,
           title: Text(
             'Booking Details',
@@ -20,17 +21,15 @@ class _BookingDetailsState extends State<BookingDetails> {
           ),
           leading: IconButton(
             icon: ImageIcon(
-              AssetImage('assets/images/drawer.png'),
+              AssetImage('assets/images/back_arrow.png'),
               color: Color(ColorValues.WHITE),
-              size: 50,
+              size: 20,
             ),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
         backgroundColor: Color(ColorValues.THEME_TEXT_COLOR),
         body: SingleChildScrollView(
-            child: Expanded(
-          flex: 0,
           child: Container(
             margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
             width: MediaQuery.of(context).size.width,
@@ -50,6 +49,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
+                        fontFamily: "Regular",
                         color: Color(ColorValues.THEME_TEXT_COLOR)),
                   ),
                 ),
@@ -67,7 +67,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                   // children: [
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.5,
+                    // height: MediaQuery.of(context).size.height * 0.5,
                     margin: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       color: Color(ColorValues.WHITE),
@@ -82,7 +82,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                       ],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +103,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                                   ),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                                  margin: EdgeInsets.fromLTRB(0, 5, 0, 15),
                                   child: Text(
                                     'ddgg vjhhj,  hgcv, hvh bkjh ghvh, hvjvj vkj bjkjk, xfggc, xgghc ghccgh, cghchghg',
                                     style: TextStyle(
@@ -126,7 +126,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                                   children: <Widget>[
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
-                                          0, 0, 0, 10),
+                                          0, 10, 0, 10),
                                       child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -154,7 +154,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
-                                          0, 0, 0, 10),
+                                          0, 10, 0, 10),
                                       child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -182,7 +182,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                                     ),
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 10),
+                                            0, 10, 0, 10),
                                         child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -209,7 +209,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                                             ])),
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 10),
+                                            0, 10, 0, 10),
                                         child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -243,7 +243,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                                   children: <Widget>[
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 10),
+                                            0, 10, 0, 10),
                                         child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -270,7 +270,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                                             ])),
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 10),
+                                            0, 10, 0, 10),
                                         child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -297,7 +297,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                                             ])),
                                     Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 10),
+                                            0, 10, 0, 10),
                                         child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
@@ -512,6 +512,6 @@ class _BookingDetailsState extends State<BookingDetails> {
               ],
             ),
           ),
-        )));
+        ));
   }
 }

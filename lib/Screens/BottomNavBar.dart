@@ -15,7 +15,16 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
+  // GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  late String _title;
+
+  @override
+  initState(){
+    _title = '';
+  }
+
   final List<Widget> _screens = [
     BookingScreen(),
     HistoryScreen(),
@@ -26,6 +35,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void _onItemTap(int index) {
     setState(() {
       _currentIndex = index;
+      switch(index) {
+        case 0: { _title = ''; }
+        break;
+        case 1: { _title = 'History'; }
+        break;
+        case 2: { _title = 'Notification'; }
+        break;
+        case 3: { _title = 'Profile'; }
+        break;
+      }
     });
   }
 
@@ -34,17 +53,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-          centerTitle: true,
-          title: Text('Welcome',
-          style: TextStyle(color: Color(ColorValues.WHITE), fontSize: 20),
+        centerTitle: true,
+        title: Text(
+          _title,
+          style: TextStyle(
+              color: Color(ColorValues.WHITE),
+              fontWeight: FontWeight.bold,
+              fontSize: 20
           ),
-        leading: IconButton(
-          icon: ImageIcon(
-            AssetImage('assets/images/drawer.png'),
-            color: Color(ColorValues.WHITE),
-            size: 50,
+        ),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: ImageIcon(
+              AssetImage('assets/images/drawer.png'),
+              color: Color(ColorValues.WHITE),
+              size: 50,
+            ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
-          onPressed: () => Scaffold.of(context).openDrawer(),
         ),
       ),
       body: Center(
@@ -67,7 +93,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage("assets/images/history_unselected.png"),
+                AssetImage("assets/images/history_selected.png"),
               ),
               title: new Text(
                 'History',
@@ -75,13 +101,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage("assets/images/notification_bell_unselected.png"),
+                AssetImage("assets/images/notification_bell_selected.png"),
               ),
               title: new Text('Notification'),
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage("assets/images/profile_unselected.png"),
+                AssetImage("assets/images/profile_selected.png"),
               ),
               title: new Text('Profile'),
             ),

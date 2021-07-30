@@ -18,14 +18,14 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
             'Booking Details',
             style: TextStyle(color: Color(ColorValues.WHITE), fontSize: 20),
           ),
-          leading: IconButton(
-            icon: ImageIcon(
-              AssetImage('assets/images/drawer.png'),
-              color: Color(ColorValues.WHITE),
-              size: 50,
-            ),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
+          // leading: IconButton(
+          //   icon: ImageIcon(
+          //     AssetImage('assets/images/drawer.png'),
+          //     color: Color(ColorValues.WHITE),
+          //     size: 50,
+          //   ),
+          //   onPressed: () => Scaffold.of(context).openDrawer(),
+          // ),
         ),
         backgroundColor: Color(ColorValues.THEME_TEXT_COLOR),
         body: SingleChildScrollView(
